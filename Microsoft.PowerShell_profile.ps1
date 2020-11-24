@@ -35,3 +35,22 @@ function Get-HomeDirectoryShare {
 
     $HomeDirectoryShares | sort -Unique
 }
+
+
+function Find-HomeDirectoryOrphan {
+    <#
+    .DESCRIPTION
+        Find home directories without a corresponding user in Active Directory.
+    #>
+
+    param (
+        $Users = (Get-ADUser -Filter * -Properties HomeDirectory | ? HomeDirectory | select SamAccountName, HomeDirectory)
+    )
+
+    $HomeDirectoryServers = Get-HomeDirectoryShare -Users $Users
+
+    foreach ($Server in $HomeDirectoryServers) {
+        $HomeDirectories = ls $Server -Directory
+        $HomeDirectories | ? { $_.Name -notin $Users.SamAccountName }
+    }
+}
