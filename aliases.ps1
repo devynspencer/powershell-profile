@@ -15,6 +15,8 @@ New-Alias gaddc Get-ADDomainController
 
 
 # Custom functions
+New-Alias cs Copy-Signature
+
 New-Alias gcw Get-Coworker
 
 New-Alias rdp Connect-RemoteDesktopSession
