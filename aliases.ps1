@@ -12,3 +12,13 @@ New-Alias which Get-Command
 New-Alias gadc Get-ADComputer
 New-Alias gadd Get-ADDomain
 New-Alias gaddc Get-ADDomainController
+
+
+# Custom functions
+New-Alias gcw Get-Coworker
+
+New-Alias rdp Connect-RemoteDesktopSession
+
+New-Alias elevate Enter-ElevatedShell
+
+New-Alias locked? Test-ADLockout
