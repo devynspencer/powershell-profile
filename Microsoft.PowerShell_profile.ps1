@@ -1,5 +1,21 @@
 #
 
+function Prompt {
+    $Cwd = "$(Split-Path -Path (Get-Location).Path -Leaf)"
+    $Width = ($Host.UI.RawUI.WindowSize.Width - 2 - $Cwd.Length)
+    $Divider = New-Object System.String @("-", $Width)
+    Write-Host $Cwd $Divider -ForegroundColor Green
+    $Identity = "$env:USERDOMAIN\$env:USERNAME".ToLower()
+    Write-Host "[" -NoNewline
+    Write-Host $Identity -ForegroundColor Cyan -NoNewline
+    Write-Host "." -NoNewline
+    Write-Host $env:COMPUTERNAME.ToLower() -ForegroundColor Cyan -NoNewline
+    Write-Host "] " -NoNewline
+    Write-Host (Get-PSSession).Count -ForegroundColor Red -NoNewline
+    " > "
+}
+
+
 function Export-History {
     param (
         $Path = "C:\temp\history"
