@@ -33,7 +33,7 @@ function Get-HomeDirectoryShare {
         $HomeDirectoryShares += $User.HomeDirectory -replace "\\$HomeDirectoryName"
     }
 
-    $HomeDirectoryShares | sort -Unique
+    $HomeDirectoryShares | sort -Unique | Get-Item
 }
 
 
