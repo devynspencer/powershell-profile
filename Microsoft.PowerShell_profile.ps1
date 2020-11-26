@@ -70,3 +70,11 @@ function Find-HomeDirectoryOrphan {
         $HomeDirectories | ? { $_.Name -notin $Users.SamAccountName }
     }
 }
+
+
+function Copy-Signature {
+    $signature = "Devyn Spencer
+Sr. Technical Systems Administrator
+Oregon Youth Authority  - Information Services"
+    $signature | Set-Clipboard
+}
