@@ -9,9 +9,9 @@ function Get-OrphanProfile {
     foreach ($Computer in $ComputerName) {
         $ProfileDirectories = Get-ChildItem -Path "\\$Computer\c$\Users" -Exclude "Public"
 
-        foreach ($Profile in $ProfileDirectories) {
-            if ($Profile.Name -notin $AccountNames) {
-                $Profile
+        foreach ($ProfileDirectory in $ProfileDirectories) {
+            if ($ProfileDirectory.Name -notin $AccountNames) {
+                $ProfileDirectory
             }
         }
     }
